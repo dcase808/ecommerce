@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <div id="g_id_onload"
+         data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
+         data-ux_mode="redirect"
+         data-login_uri="http://127.0.0.1:8000/users/token/ouath">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+  </body>
+</html>
+
+
+
+
+
+<script>
+    function handleCredentialResponse(CredentialResponse){
+        console.log(CredentialResponse.credential)
+    }
+</script>
