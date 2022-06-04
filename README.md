@@ -1,7 +1,7 @@
 # Ecommerce site
 Ecommerce site build with (?), Python with FastAPI and MongoDB. Demo at {todo}
 ## Configuration
-Enter your MongoDB connection string and your randomly generated SECRET_KEY, PayU and Google API credentials in ```back/src/app/secrets.py```. You can generate your secret key using OpenSSL.
+Enter your MongoDB connection string, PayU and Google API credentials, and your randomly generated SECRET_KEY in ```back/src/app/secrets.py```. You can generate your secret key using OpenSSL.
 ```
 openssl rand -hex 32
 ```
