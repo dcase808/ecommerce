@@ -16,16 +16,15 @@ Run API using uvicorn server.
 uvicorn app.main:app --reload
 ```
 ## Demo
-###
-API
+### API
 ```
 https://ecommerce-demo-api.herokuapp.com/v1/api/docs
 ```
-Admin API
+### Admin API
 ```
 https://ecommerce-demo-api.herokuapp.com/v1/admin/docs
 ```
-Website
+### Website
 ```
 https://ecommerce-pl2jvdjmy-dcase808.vercel.app/
 ```
