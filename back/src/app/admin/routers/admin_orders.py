@@ -17,7 +17,7 @@ async def get_order_by_id(id: PydanticObjectId):
 
 @router.get('', response_model=list[OrderInDB], dependencies=[Depends(get_current_user)])
 async def get_orders():
-    return await OrderOut.find().to_list()
+    return await OrderInDB.find().to_list()
 
 @router.patch('/', response_model=OrderInDB, dependencies=[Depends(get_current_user)])
 async def update_order(data: OrderUpdate):
