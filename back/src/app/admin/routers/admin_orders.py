@@ -10,7 +10,7 @@ router = APIRouter(
 
 @router.get('/{id}', response_model=OrderInDB, dependencies=[Depends(get_current_user)])
 async def get_order_by_id(id: PydanticObjectId):
-    order = await OrderOut.find_one({'_id': id})
+    order = await OrderInDB.find_one({'_id': id})
     if order is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     return order
