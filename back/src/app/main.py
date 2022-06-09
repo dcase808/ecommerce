@@ -17,15 +17,15 @@ app.add_middleware(
 async def startup_event():
     await init()
 
-@app.get('/', include_in_schema=False)
+@app.get('', include_in_schema=False)
 async def root():
-    raise HTTPException(status_code=status.HTTP_204_NO_CONTENT)
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
 api = FastAPI()
 
 @api.get('/', include_in_schema=False)
 async def root():
-    raise HTTPException(status_code=status.HTTP_204_NO_CONTENT)
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     
 api.include_router(items.router)
 api.include_router(users.router)
@@ -36,7 +36,7 @@ admin = FastAPI()
 
 @admin.get('/', include_in_schema=False)
 async def root():
-    raise HTTPException(status_code=status.HTTP_204_NO_CONTENT)
+    raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
 
 admin.include_router(admin_users.router)
 admin.include_router(admin_items.router)
