@@ -39,7 +39,7 @@ async def create_payment_request(order, ip):
     products = await get_products_in_order(order)
     
     data = {
-        'notifyUrl': "https://ecommerce-demo-api.herokuapp.com/payments/confirm",
+        'notifyUrl': "https://ecommerce-demo-api.herokuapp.com/v1/api/payments/confirm",
         "customerIp": ip,
         'merchantPosId': PAYU_POS,
         'description': 'Zamowienie '+ str(order.id),
