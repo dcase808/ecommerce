@@ -2,6 +2,7 @@ from decimal import Decimal
 from pydantic import BaseModel, EmailStr, Field
 from beanie import Document, PydanticObjectId
 from datetime import datetime
+import pymongo
 
 class User(Document):
     id: str | None = Field(None)
@@ -28,6 +29,11 @@ class Item(Document):
     desc: str
     price: Decimal
     tags: list[str] | None = None
+
+    class Settings:
+        indexes = [
+            [('title', pymongo.TEXT), ('tags', pymongo.TEXT)]
+        ]
 
 class ItemUpdate(Item):
     title: str | None = None
