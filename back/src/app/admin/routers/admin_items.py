@@ -24,7 +24,7 @@ async def update_item(data: ItemUpdate):
 
 @router.post('/image', dependencies=[Depends(get_current_user)])
 async def upload_image(file: UploadFile):
-    if file.content_type == 'image/png' or file.content_type == 'image/jpg':
+    if file.content_type == 'image/png' or file.content_type == 'image/jpeg':
         content = await file.read()
         bucket.upload_bytes(content, file.filename, file.content_type)
         return {'file_url': bucket.get_download_url(file.filename)}
