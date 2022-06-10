@@ -16,6 +16,6 @@ async def get_items(tag: str | None = Query(None)):
     else:
         return await Item.find().to_list()
 
-@router.get('search', response_model=list[Item])
+@router.get('/search', response_model=list[Item])
 async def search_items(query: str):
-    return await Item.find({'$text': {'$search': query}})
+    return await Item.find({'$text': {'$search': query}}).to_list()
