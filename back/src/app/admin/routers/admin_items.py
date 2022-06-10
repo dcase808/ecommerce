@@ -22,7 +22,7 @@ async def update_item(data: ItemUpdate):
     await Item.find_one({'_id': data.id}).update({'$set': updated_data})
     return await Item.find_one({'_id': data.id})
 
-@router.post('/image')
+@router.post('/image', dependencies=[Depends(get_current_user)])
 async def upload_image(file: UploadFile):
     if file.content_type == 'image/png' or file.content_type == 'image/jpg':
         content = await file.read()
