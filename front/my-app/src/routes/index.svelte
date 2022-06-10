@@ -1,16 +1,16 @@
-
 <script>
+import Menu from "../lib/Components/Menu.svelte";
+
 
 </script>
 
 <svelte:head>
 	<title>DShop</title>
-	<meta name="description" content="Svelte demo app" />
+	<meta name="description" content="Sklep internetowy" />
 </svelte:head>
 
-<section>
+	<Menu />
 
-</section>
 
 <style>
 	section {
