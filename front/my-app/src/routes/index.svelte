@@ -8,7 +8,7 @@ import Menu from "../lib/Components/Menu.svelte";
 	<title>DShop</title>
 	<meta name="description" content="Sklep internetowy" />
 </svelte:head>
-
+<p>ss</p>
 	<Menu />
 
 
