@@ -5,7 +5,7 @@ import { get_root_for_style, group_outros } from "svelte/internal";
 
     <div class="menu">
         <div class="search-container">
-            <form action={`/search/${value}`}>
+            <form on:submit|preventDefault = {() => {goto('/search/' + value)}}>
                 <input type="text" bind:value={value} placeholder="Wyszukaj..." name="search">
                 <button type="submit">Wyszukaj</button>
             </form>
