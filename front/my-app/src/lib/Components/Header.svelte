@@ -1,5 +1,6 @@
 <script>
-import Navbar from './Navbar.svelte';
+import Navbar from "../Components/Navbar.svelte";
+
 </script>
 
 <header>
@@ -9,7 +10,6 @@ import Navbar from './Navbar.svelte';
 
 	<Navbar />
 	<div class="corner">
-		<!-- TODO put something else here? github link? -->
 	</div>
 </header>
 
@@ -20,8 +20,7 @@ import Navbar from './Navbar.svelte';
 	}
 
 	.corner img {
-        width: 200px;
-        padding: 10px 10px 10px 10px;   
+        width: 200px; 
 	}
 
 
