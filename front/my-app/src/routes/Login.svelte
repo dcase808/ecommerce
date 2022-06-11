@@ -53,19 +53,84 @@
     }
 </script>
 
-<div>
-    {#if showError}
-        Błędny login lub hasło
-    {/if}
-    <form on:submit|preventDefault={submit}>
-        <label>
-            Login<br>
-            <input type="text" bind:value={username} required>        
-        </label>
-        <label>
-            Hasło<br>
-            <input type='password' bind:value={password} required>
-        </label>
-        <input type='submit' value='Zaloguj'>
-    </form>
+<div id="content">
+    <div id="login">
+        {#if showError}
+            Błędny login lub hasło
+        {/if}
+        <form on:submit|preventDefault={submit}>
+            <label>
+                <span>email</span><br>
+                <input type="text" bind:value={username} required><br>    
+            </label>
+            <label>
+                <span>haslo</span><br>
+                <input type='password' bind:value={password} required><br>
+            </label><br>
+            <input class="buttons" type='submit' value='Zaloguj'>
+        </form>
+    </div>
+
+    <div id="register">
+        <form on:submit|preventDefault={submit}>
+            <label>
+                <span>email</span><br>
+                <input type="text"  required><br>        
+            </label>
+            <label>
+                <span>imie</span><br>
+                <input type='text'  required><br>
+            </label>
+            <label>
+                <span>nazwisko</span><br>
+                <input type='text'  required><br>
+            </label>
+            <label>
+                <span>kod pocztowy</span><br>
+                <input type='text'  required><br>
+            </label>
+            <label>
+                <span>adres</span><br>
+                <input type='text'  required><br>
+            </label>
+            <label>
+                <span>hasło</span><br>
+                <input type='password'  required><br>
+            </label>
+            <input class="buttons" type='submit' value='Zaloguj'>
+        </form>
+    </div>
 </div>
+<style>
+    #login{
+        float: right;
+        width: 50%;
+        text-align: center;
+    }
+
+    #register{
+        text-align: center;
+        width: 50%;
+    }
+
+    #content{
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    form{
+        padding: 0;
+        margin: 0;
+    }
+
+    .buttons{
+        background-color: burlywood;
+            border: solid gray 2px;
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+    }
+</style>

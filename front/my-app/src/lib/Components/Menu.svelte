@@ -28,6 +28,7 @@
 <style>
     .menu {
         text-align: left;
+        width: 100%;
     }
     .items {
         padding: 10px 16px;

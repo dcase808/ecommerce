@@ -17,10 +17,9 @@ import Header from '../lib/Components/Header.svelte';
 	main {
 		flex: 1;
 		display: flex;
-		flex-direction: column;
 		width: 100%;
-		max-width: 1024px;
-		margin: 0 auto;
+		margin: 0;
+		padding: 0;
 	}
 
 	footer {
