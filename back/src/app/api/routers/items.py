@@ -8,7 +8,10 @@ router = APIRouter(
     prefix='/items',
     tags=['items'],
 )
-
+@router.get('/{id}', response_model=Item)
+async def get_item(id: str):
+    return await Item.get(id)
+    
 @router.get('', response_model=list[Item])
 async def get_items(tag: str | None = Query(None)):
     if tag:
