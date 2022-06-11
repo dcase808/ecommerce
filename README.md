@@ -26,5 +26,5 @@ https://ecommerce-demo-api.herokuapp.com/v1/admin/docs
 ```
 ### Website
 ```
-https://ecommerce-pl2jvdjmy-dcase808.vercel.app/
+https://ecommerce-three-drab.vercel.app/
 ```
