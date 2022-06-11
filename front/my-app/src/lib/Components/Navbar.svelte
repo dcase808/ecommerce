@@ -1,12 +1,15 @@
 <script>
-import { get_root_for_style, group_outros } from "svelte/internal";
     let value;
+
+    const searchForward = () => {
+        goto('/search/' + value)
+    }
 </script>
 
     <div class="menu">
         <div class="search-container">
-            <form on:submit|preventDefault = {() => {goto('/search/' + value)}}>
-                <input type="text" bind:value={value} placeholder="Wyszukaj..." name="search">
+            <form on:submit|preventDefault = {searchForward}>
+                <input type="text" bind:value={value} placeholder="Wyszukaj..." name="search" required>
                 <button type="submit">Wyszukaj</button>
             </form>
         </div>
