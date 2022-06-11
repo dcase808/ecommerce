@@ -1,5 +1,5 @@
 # Ecommerce site
-Ecommerce site build with (?), Python with FastAPI and MongoDB. Demo at {todo}
+Ecommerce site build with Svelte, Python with FastAPI and MongoDB.
 ## Configuration
 Enter your MongoDB connection string, PayU and Google API credentials, and your randomly generated SECRET_KEY in ```back/src/app/secrets.py```. You can generate your secret key using OpenSSL.
 ```
