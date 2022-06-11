@@ -15,7 +15,7 @@
         {:then items}
         {#each items as item }
         <li>
-            {item.title}
+            <a href= {`/items/${item._id}`}>{item.title}</a>
             <br>
         </li>
         {/each}

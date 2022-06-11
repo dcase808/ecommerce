@@ -1,7 +1,5 @@
 <script>
 import { get_root_for_style, group_outros } from "svelte/internal";
-
-
     let value;
 </script>
 
