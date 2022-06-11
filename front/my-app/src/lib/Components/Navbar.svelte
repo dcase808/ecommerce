@@ -15,7 +15,7 @@
             </form>
         </div>
         <a class="link" href="kontakt">Kontakt</a>
-        <a class="link" href="konto">Twoje konto</a>
+        <a class="link" href="/account">Twoje konto</a>
     </div>
 
     <style>
