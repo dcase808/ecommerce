@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     let value;
 
     const searchForward = () => {
