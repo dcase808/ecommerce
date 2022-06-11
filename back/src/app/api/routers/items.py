@@ -1,5 +1,6 @@
 from re import A
-from fastapi import APIRouter, Depends, Query
+from beanie import PydanticObjectId
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from ..auth import get_current_user
 from ...models import Item
 from beanie.operators import In
@@ -22,4 +23,8 @@ async def search_items(query: str):
 
 @router.get('/{id}', response_model=Item)
 async def get_item(id: str):
+    try:
+        PydanticObjectId(id)
+    except:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND)
     return await Item.get(id)
