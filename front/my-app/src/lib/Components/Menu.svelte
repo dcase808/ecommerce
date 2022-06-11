@@ -7,7 +7,6 @@
 </script>
 
 <div class="menu">
-    <p>Kategorie</p>
     <div class="items">
         <ul>
         {#await items}

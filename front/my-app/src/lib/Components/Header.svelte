@@ -9,18 +9,23 @@ import Navbar from "../Components/Navbar.svelte";
 	</div>
 
 	<Navbar />
-	<div class="corner">
-	</div>
 </header>
 
 <style>
 	header {
 		display: flex;
 		justify-content: space-between;
+		width: 100%;
+	}
+	.corner{
+		width: 20%;
+	}
+	header{
+		background-color: bisque;
 	}
 
 	.corner img {
-        width: 200px; 
+        width: 100%; 
 	}
 
 

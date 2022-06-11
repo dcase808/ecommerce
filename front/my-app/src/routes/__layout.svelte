@@ -29,5 +29,6 @@ import Header from '../lib/Components/Header.svelte';
 		justify-content: center;
 		align-items: center;
 		padding: 40px;
+		background-color: rgb(107, 71, 17);
 	}
 </style>

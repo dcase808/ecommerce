@@ -10,8 +10,8 @@
     <div class="menu">
         <div class="search-container">
             <form on:submit|preventDefault = {searchForward}>
-                <input type="text" bind:value={value} placeholder="Wyszukaj..." name="search" required>
-                <button type="submit">Wyszukaj</button>
+                <input id="search" type="text" bind:value={value}  placeholder="Wyszukaj..." name="search" required>
+                <button id="search-button" type="submit">Wyszukaj</button>
             </form>
         </div>
         <a class="link" href="kontakt">Kontakt</a>
@@ -22,7 +22,7 @@
         .menu{
             display: flex;
             align-items: center;
-            width: 100%;
+            width: 80%;
         }
         .link{
             width: 60%;
@@ -31,16 +31,31 @@
             text-decoration: none;
             color: rgb(0, 0, 0);
         }
+        .search-container {
+            width: 100%;
+        }
         .search-container button {
             float: right;
-            padding: 5px 10px;
             font-size: 15px;
             border: none;
             cursor: pointer;
+            width: 20%;
+            height: 30px;
+            margin-top: 2px;
         }
-        .search-container {
-            display: flex;
+        #search{
+            width: 75%;
+            height: 30px;
             float: center;
-            width: 60%;
+            background-color: white;
+            color: black;
+        }
+        #search-button{
+            background-color: burlywood;
+            border: solid gray 2px;
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
         }
     </style>
