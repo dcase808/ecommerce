@@ -1,5 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
+    import User from '../../routes/User.svelte';
     let value;
 
     const searchForward = () => {
@@ -14,7 +15,6 @@
                 <button id="search-button" type="submit">Wyszukaj</button>
             </form>
         </div>
-        <a class="link" href="kontakt">Kontakt</a>
         <a class="link" href="/Login">Twoje konto</a>
     </div>
 
