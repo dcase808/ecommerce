@@ -1,16 +1,16 @@
 <script>
     import {goto} from '$app/navigation';
     import Cookies from 'js-cookie'
-    import API_URL from '$lib/Constans/Constans.svelte'
+    import {API_URL} from '$lib/Constans/Constans.svelte'
 
 
     let username, password;
     let showError = false;
 
     const validateAndForward = async () => {
-        let url = API_URL + '/me'
+        let url = API_URL + '/users/me'
         let response = await fetch (url, {
-            headers: {'Authorization': 'Bearer' + Cookies.get('jwt-token')}
+            headers: {'Authorization': 'Bearer ' + Cookies.get('jwt-token')}
         })
 
         if(response.ok) {
@@ -27,7 +27,8 @@
             let data = new URLSearchParams()
             data.append('username', username)
             data.append('password', password)
-            let url = API_URL + '/token'
+            let url = API_URL + '/users/token'
+            console.log(url)
             let response = await fetch(url, {
                 method: 'POST',
                 headers: {'Content-type': 'application/x-www-form-urlencoded'},
@@ -67,5 +68,4 @@
         </label>
         <input type='submit' value='Zaloguj'>
     </form>
-
 </div>
