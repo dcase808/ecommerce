@@ -59,13 +59,13 @@
             Błędny login lub hasło
         {/if}
         <form on:submit|preventDefault={submit}>
-            <label>
-                <span>email</span><br>
-                <input type="text" bind:value={username} required><br>    
+            <label><br><br><br>
+                <span>Podaj email:</span><br>
+                <input type="text" bind:value={username} required><br><br>   
             </label>
             <label>
-                <span>haslo</span><br>
-                <input type='password' bind:value={password} required><br>
+                <span>Wpisz hasło:</span><br>
+                <input type='password' bind:value={password} required><br><br>
             </label><br>
             <input class="buttons" type='submit' value='Zaloguj'>
         </form>
@@ -74,30 +74,30 @@
     <div id="register">
         <form on:submit|preventDefault={submit}>
             <label>
-                <span>email</span><br>
-                <input type="text"  required><br>        
+                <span>Podaj email:</span><br>
+                <input type="text"  required><br> <br>       
             </label>
             <label>
-                <span>imie</span><br>
-                <input type='text'  required><br>
+                <span>Podaj imie:</span><br>
+                <input type='text'  required><br><br>
             </label>
             <label>
-                <span>nazwisko</span><br>
-                <input type='text'  required><br>
+                <span>Podaj nazwisko:</span><br>
+                <input type='text'  required><br><br>
             </label>
             <label>
-                <span>kod pocztowy</span><br>
-                <input type='text'  required><br>
+                <span>Podaj kod pocztowy</span><br>
+                <input type='text'  required><br><br>
             </label>
             <label>
-                <span>adres</span><br>
-                <input type='text'  required><br>
+                <span>Podaj adres:</span><br>
+                <input type='text'  required><br><br>
             </label>
             <label>
-                <span>hasło</span><br>
-                <input type='password'  required><br>
+                <span>Podaj hasło</span><br>
+                <input type='password'  required><br><br>
             </label>
-            <input class="buttons" type='submit' value='Zaloguj'>
+            <input class="buttons" type='submit' value='Zarejestruj się'>
         </form>
     </div>
 </div>
@@ -132,5 +132,9 @@
             color: black;
             font-weight: bold;
             font-family: 'Courier New', Courier, monospace;
+    }
+    span{
+        font-size: 25px;
+        font-weight: bold;
     }
 </style>
