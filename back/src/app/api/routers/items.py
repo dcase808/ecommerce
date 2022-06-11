@@ -8,10 +8,7 @@ router = APIRouter(
     prefix='/items',
     tags=['items'],
 )
-@router.get('/{id}', response_model=Item)
-async def get_item(id: str):
-    return await Item.get(id)
-    
+
 @router.get('', response_model=list[Item])
 async def get_items(tag: str | None = Query(None)):
     if tag:
@@ -22,3 +19,7 @@ async def get_items(tag: str | None = Query(None)):
 @router.get('/search', response_model=list[Item])
 async def search_items(query: str):
     return await Item.find({'$text': {'$search': f'"{query}"'}}).to_list()
+
+@router.get('/{id}', response_model=Item)
+async def get_item(id: str):
+    return await Item.get(id)
