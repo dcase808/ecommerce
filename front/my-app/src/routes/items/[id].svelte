@@ -15,6 +15,7 @@
 {:then item} 
 <div class="item">
     <h3>{item.title}</h3>
+    <p>{item.desc}</p>
     <p>{item.price}</p>
 </div>
 {/await}

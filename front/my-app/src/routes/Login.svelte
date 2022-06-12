@@ -23,7 +23,7 @@
         })
 
         if(response.ok) {
-            goto('/User')
+            goto('/user')
         }
     }
 

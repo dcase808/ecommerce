@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    import User from '../../routes/User.svelte';
+    import user from '../../routes/user.svelte';
     let value;
 
     const searchForward = () => {
@@ -16,6 +16,7 @@
             </form>
         </div>
         <a class="link" href="/Login">Twoje konto</a>
+        <a class="link" href="/orders">Koszyk</a>
     </div>
 
     <style>

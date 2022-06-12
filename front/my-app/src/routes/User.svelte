@@ -20,21 +20,10 @@
         loggedIn = true
     }
 
-    const getUser = async () => {
-        if(Cookies.get('jwt-token')) {
-            validateAndForward()
-        }
-        else {
-        return await response.json();
-        }
-        
-    } 
-    const users = getUser();
-
     const checkIfLoggedIn = async () => {
         if(Cookies.get('jwt-token'))
         {
-            getUser()
+            validateAndForward()
         }
         else
         {
@@ -53,12 +42,6 @@
 <div>
     <p>Tu bedzie info o koncie</p>
     {#if loggedIn}
-    {#await users}
-        loading
-    {:then users } 
-        <p>{users.name}</p>
-        {console.log(users)}
-    {/await}
     <button on:click={logout}>Wyloguj</button>
     {/if}
 </div>
