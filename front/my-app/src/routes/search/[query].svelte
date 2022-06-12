@@ -14,7 +14,7 @@
     loading
 {:then items}
 {#each items as item}
-    {item.title}<br>
+<a href= {`/items/${item._id}`}>{item.title}</a>
 {/each} 
     
 {/await}

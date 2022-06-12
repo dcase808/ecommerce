@@ -3,9 +3,18 @@
     import Cookies from 'js-cookie'
     import {API_URL} from '$lib/Constans/Constans.svelte'
 
-
     let username, password;
+
+    let registerUsername;
+    let registerPassword;
+    let nameAndSecondName; 
+    let address;
+    let postal_code;
+    let city;
+
     let showError = false;
+    let showErrorRegister = false;
+    let registerStatus = false;
 
     const validateAndForward = async () => {
         let url = API_URL + '/users/me'
@@ -47,6 +56,42 @@
         }
     }
 
+    const registerSubmit = async () => {
+
+        if(Cookies.get('jwt-token')) {
+            validateAndForward()
+        }
+        else {
+
+            let data = {
+                _id: registerUsername,
+                name: nameAndSecondName,
+                address: address,
+                postal_code: postal_code,
+                city: city,
+                password: registerPassword
+            }
+            let url = API_URL + '/users/register'
+            console.log(url)            
+            let response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+                
+            if(response.ok) {
+                //let body = await response.json()
+                showErrorRegister = false;
+                registerStatus = true;
+                //Cookies.set('jwt-token', body.access_token, {sameSite: 'strict'})
+               // validateAndForward()
+                }
+            else {
+                showErrorRegister = true
+            }
+        }
+    }
+
     if(Cookies.get('jwt-token'))
     {
         validateAndForward()
@@ -61,7 +106,7 @@
         <form on:submit|preventDefault={submit}>
             <label><br><br><br>
                 <span>Podaj email:</span><br>
-                <input type="text" bind:value={username} required><br><br>   
+                <input type='text' bind:value={username} required><br><br>   
             </label>
             <label>
                 <span>Wpisz hasło:</span><br>
@@ -72,30 +117,36 @@
     </div>
 
     <div id="register">
-        <form on:submit|preventDefault={submit}>
+        {#if showErrorRegister}
+        Błąd przy próbie rejestracji
+        {/if}
+        {#if registerStatus}
+        Pomyslnie zarejestrowano konto!
+        {/if}
+        <form on:submit|preventDefault={registerSubmit}>
             <label>
                 <span>Podaj email:</span><br>
-                <input type="text"  required><br> <br>       
+                <input type='text' bind:value={registerUsername} required><br><br>
             </label>
             <label>
-                <span>Podaj imie:</span><br>
-                <input type='text'  required><br><br>
-            </label>
-            <label>
-                <span>Podaj nazwisko:</span><br>
-                <input type='text'  required><br><br>
+                <span>Podaj imie i nazwisko:</span><br>
+                <input type='text' bind:value={nameAndSecondName} required><br><br>
             </label>
             <label>
                 <span>Podaj kod pocztowy</span><br>
-                <input type='text'  required><br><br>
+                <input type='text' bind:value={postal_code} required><br><br>
             </label>
             <label>
                 <span>Podaj adres:</span><br>
-                <input type='text'  required><br><br>
+                <input type='text' bind:value={address} required><br><br>
             </label>
             <label>
+            <label>
+                <span>Podaj miasto:</span><br>
+                <input type='text' bind:value={city} required><br><br>
+            </label>
                 <span>Podaj hasło</span><br>
-                <input type='password'  required><br><br>
+                <input type='password' bind:value={registerPassword}  required><br><br>
             </label>
             <input class="buttons" type='submit' value='Zarejestruj się'>
         </form>
