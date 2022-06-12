@@ -53,7 +53,6 @@
     {#await orders}
     Loading    
     {:then orders}
-    <Orders id={orders._id} item={orders.item}/>  
+    <Orders _id={orders._id} item ={[orders.id, orders.quantity]} price = {orders.price} paid = {orders.paid} />  
     {/await}
-    </div>
-<p>Tu beda zamuwienia</p>
+</div>

@@ -71,8 +71,7 @@
                 city: city,
                 password: registerPassword
             }
-            let url = API_URL + '/users/register'
-            console.log(url)            
+            let url = API_URL + '/users/register'           
             let response = await fetch(url, {
                 method: 'POST',
                 headers: {'Content-type': 'application/json'},
@@ -80,11 +79,8 @@
             })
                 
             if(response.ok) {
-                //let body = await response.json()
                 showErrorRegister = false;
                 registerStatus = true;
-                //Cookies.set('jwt-token', body.access_token, {sameSite: 'strict'})
-               // validateAndForward()
                 }
             else {
                 showErrorRegister = true
