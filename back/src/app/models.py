@@ -1,5 +1,5 @@
 from decimal import Decimal
-from pydantic import BaseModel, EmailStr, Field, FileUrl
+from pydantic import AnyUrl, BaseModel, EmailStr, Field
 from beanie import Document, PydanticObjectId
 from datetime import datetime
 import pymongo
@@ -28,7 +28,7 @@ class Item(Document):
     title: str
     desc: str
     price: Decimal
-    img: FileUrl | None = None
+    img: AnyUrl | None = None
     tags: list[str] | None = None
 
     class Settings:

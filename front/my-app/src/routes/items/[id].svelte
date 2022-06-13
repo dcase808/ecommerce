@@ -11,7 +11,7 @@
     </script>
 
 {#await item}
-    loading
+    <span>loading</span>
 {:then item} 
 <div class="item">
     <h3>{item.title}</h3>
