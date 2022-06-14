@@ -167,23 +167,7 @@ import { update_await_block_branch } from 'svelte/internal';
                 <input type='password' bind:value={password} required>
             </label>
             <input class="buttons" type='submit' value='Zaloguj'>
-            <div id='google-login'>
-                <div id="g_id_onload"
-                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
-                data-callback="googleLogin"
-                data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-                data-type="icon"
-                data-size="medium"
-                data-theme="outline"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left">
-            </div>
-            </div>
         </form>
-
     </div>
 
 
@@ -220,21 +204,6 @@ import { update_await_block_branch } from 'svelte/internal';
                 <div>Hasło</div>
                 <input type='password' bind:value={registerPassword}  required>
             </label>
-            <div id='google-register'>
-                <div id="g_id_onload"
-                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
-                data-callback="googleRegister"
-                data-auto_prompt="false">
-                </div>
-                <div class="g_id_signin"
-                    data-type="icon"
-                    data-size="medium"
-                    data-theme="outline"
-                    data-text="sign_in_with"
-                    data-shape="rectangular"
-                    data-logo_alignment="left">
-                </div>
-            </div>
             <input class="buttons" type='submit' value='Zarejestruj'>
 
         </form>
@@ -242,6 +211,13 @@ import { update_await_block_branch } from 'svelte/internal';
 
     </div>
 </div>
+<div id="g_id_onload"
+            data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
+            data-callback="googleLogin"
+            data-your_own_param_1_to_login="any_value"
+            data-your_own_param_2_to_login="any_value">
+</div>
+
 <style>
     #content{
         display: flex;
