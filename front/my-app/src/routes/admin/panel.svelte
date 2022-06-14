@@ -4,7 +4,10 @@
     import Cookies from 'js-cookie'
     import {ADMIN_API_URL} from '$lib/Constans/Constans.svelte'
 
+    let id
     let loggedIn = false
+    let success = false
+    let fail = false
 
     const validateAndForward = async () => {
         let url = ADMIN_API_URL + '/users/me'
@@ -37,11 +40,44 @@
         Cookies.remove('jwt-token-admin')
         goto('/')
     }
+
+    const setToPaid = async () => {
+        let url = ADMIN_API_URL + '/orders/'
+        let body = {
+            _id: id,
+            paid: true
+        }
+        let response = await fetch(url, {
+            method: "PATCH",
+            headers: {'Authorization': 'Bearer ' + Cookies.get('jwt-token-admin'),
+            'Content-type': 'application/json'
+        },
+        body : JSON.stringify(body)
+        })
+        if(response.ok) {
+            success = true   
+        }
+        else {
+            fail = true
+        }
+    }
 </script>
 
 <main>
     {#if loggedIn}
         <a href="/admin/addItem">Dodaj przedmiot</a> <br>
+        {#if success}
+            <span>
+                Zmieniono status zamówienia na opłacone!
+            </span>
+        {/if}
+        {#if fail}
+            <span>
+                Błąd w zmianie statusu zamówienia.
+            </span>
+        {/if}
+        <input type="text" bind:value={id} placeholder="id zamówienia">
+        <button on:click={setToPaid}>Zmień na opłacone</button>
         <button on:click={logout}>Wyloguj</button>
     {/if}    
 </main>
