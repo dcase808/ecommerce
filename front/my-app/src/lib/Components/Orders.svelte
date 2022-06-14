@@ -5,14 +5,15 @@
 
 <section>
     <p>ID zamówienia: {_id}</p>
+    <p>Status: {paid ? 'Opłacone' : 'Nie opłacone'}</p>
         {#each item as it}
             <ItemInOrders id ={it.id} quantity = {it.quantity} />
         {/each}   
     <p>Suma: {price} PLN</p>
-    <p>Czy zapłacono? {paid}</p>
+    
 </section>
 <style>
     section {
-        border-bottom: solid 2px;
+        border-bottom: dotted 1px;
     }
 </style>
