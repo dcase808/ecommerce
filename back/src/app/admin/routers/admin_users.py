@@ -35,3 +35,7 @@ async def update_user(data: User):
     updated_data = data.dict(exclude_unset=True, exclude={'id'})
     await User.find_one({'_id': data.id}).update({'$set': updated_data})
     return await User.find_one({'_id': data.id})
+
+@router.get('/me')
+async def get_current_admin(user = Depends(get_current_user)):
+    return {'user': 'admin'}

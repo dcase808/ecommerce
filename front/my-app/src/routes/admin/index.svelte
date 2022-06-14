@@ -1,25 +1,14 @@
 <script>
     import {goto} from '$app/navigation';
     import Cookies from 'js-cookie'
-    import {API_URL} from '$lib/Constans/Constans.svelte'
+    import {ADMIN_API_URL} from '$lib/Constans/Constans.svelte'
 
-    let username, password;
-
-    let registerUsername;
-    let registerPassword;
-    let nameAndSecondName; 
-    let address;
-    let postal_code;
-    let city;
-
-    let showError = false;
-    let showErrorRegister = false;
-    let registerStatus = false;
+    let username, password, showError
 
     const validateAndForward = async () => {
-        let url = API_URL + '/users/me'
+        let url = ADMIN_API_URL + '/users/me'
         let response = await fetch (url, {
-            headers: {'Authorization': 'Bearer ' + Cookies.get('jwt-token')}
+            headers: {'Authorization': 'Bearer ' + Cookies.get('jwt-token-admin')}
         })
 
         if(response.ok) {
@@ -29,14 +18,14 @@
 
 
     const submit = async () => {
-        if(Cookies.get('jwt-token')) {
+        if(Cookies.get('jwt-token-admin')) {
             validateAndForward()
         }
         else {
             let data = new URLSearchParams()
             data.append('username', username)
             data.append('password', password)
-            let url = API_URL + '/users/token'
+            let url = ADMIN_API_URL + '/users/token'
             console.log(url)
             let response = await fetch(url, {
                 method: 'POST',
@@ -56,38 +45,6 @@
         }
     }
 
-    const registerSubmit = async () => {
-
-        if(Cookies.get('jwt-token')) {
-            validateAndForward()
-        }
-        else {
-
-            let data = {
-                _id: registerUsername,
-                name: nameAndSecondName,
-                address: address,
-                postal_code: postal_code,
-                city: city,
-                password: registerPassword
-            }
-            let url = API_URL + '/users/register'           
-            let response = await fetch(url, {
-                method: 'POST',
-                headers: {'Content-type': 'application/json'},
-                body: JSON.stringify(data)
-            })
-                
-            if(response.ok) {
-                showErrorRegister = false;
-                registerStatus = true;
-                }
-            else {
-                showErrorRegister = true
-            }
-        }
-    }
-
     if(Cookies.get('jwt-token'))
     {
         validateAndForward()
@@ -101,7 +58,7 @@
         {/if}
         <form on:submit|preventDefault={submit}>
             <label><br><br><br>
-                <span>Podaj email:</span><br>
+                <span>Podaj login</span><br>
                 <input type='text' bind:value={username} required><br><br>   
             </label>
             <label>
@@ -112,3 +69,13 @@
         </form>
     </div>
 </div>
+<style>
+    #content {
+        width: 70%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+</style>
