@@ -33,6 +33,13 @@
         }
     });
 
+    function googleLoaded() {
+        googleReady = true;
+        if (mounted) {
+            displaySignInButton()
+        }
+    }
+
     function displaySignInButton() {
         google.accounts.id.initialize({
             client_id: "541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com",
