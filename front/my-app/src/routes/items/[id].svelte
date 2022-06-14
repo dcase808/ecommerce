@@ -4,6 +4,8 @@
     
     let cart;
 
+    let inCart = false;
+
     shopping_cart.subscribe(value => {
         cart = value
     })
@@ -15,20 +17,26 @@
         .then(response => response)
         
     } 
-    const addToCart = () => {
+    const addToCart = (price) => {
         if (cart.some(e => e.item_id === id)) 
         {
-            cart.some(e => {
-                e.quantity = e.quantity + 1
-            })
+            for (const obj of cart) 
+            {
+                 if (obj.item_id === id) 
+                 {
+                    obj.quantity++;
+                 }
+            }
         }
         else
         {
             cart.push({
                 item_id: id,
-                quantity: 1
+                quantity: 1,
+                price: price
             })
         }
+        inCart = true
     }
     const item = getItems();
     </script>
@@ -43,7 +51,16 @@
             <div class='title'>{item.title}</div>
             <div class='price'>{item.price} PLN</div>
             <div class='description'>{item.desc}</div>
-            <div class='add-to-cart'><button on:click={addToCart}>Dodaj do koszyka</button></div>
+            <div class='add-to-cart'>
+                {#if inCart}
+                    <span>Dodano do koszyka</span>
+                {:else}
+                    <button on:click={() => {addToCart(item.price)}}>
+                        Dodaj do koszyka
+                    </button>
+                {/if}
+            </div>
+
         </div>
         
     {/await}

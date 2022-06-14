@@ -9,7 +9,7 @@
         {#each item as it}
             <ItemInOrders id ={it.id} quantity = {it.quantity} />
         {/each}   
-    <p>Suma: {price} PLN</p>
+    <p>Suma: {price.toFixed(2)} PLN</p>
     
 </section>
 <style>

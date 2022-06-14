@@ -8,7 +8,7 @@
         </div>
         <div class='summary'>
             <div class='title'>{title}</div>
-            <div class='price'>{price} PLN</div>
+            <div class='price'>{price.toFixed(2)} PLN</div>
             <div class='desc'>{desc}</div>
         </div>
     </section>
@@ -21,6 +21,7 @@
         margin-bottom: 10px;
         padding: 20px;
         display: flex;
+        align-items: center;
         border: dotted 1px;
     }
     .img {

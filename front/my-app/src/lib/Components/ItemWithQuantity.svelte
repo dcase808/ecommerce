@@ -8,10 +8,15 @@
         </div>
         <div class='summary'>
             <div class='title'>{title}</div>
-            <div class='price'>{price} PLN</div>
+            <div class='price'>{price.toFixed(2)} PLN</div>
             <div class='desc'>{desc}</div>
         </div>
-        <div class='quantity'>Sztuk: {quantity}</div>
+        <div class='quantity'>
+            Sztuk: {quantity}<br>
+            Suma częściowa:<br>
+            {(quantity * price).toFixed(2)} PLN
+        </div>
+        
     </section>
 </a>
 <style>
@@ -24,6 +29,7 @@
         display: flex;
         border: dotted 1px;
         align-items: center;
+        justify-content: space-around;
     }
     .img {
         height: 150px;
@@ -41,7 +47,8 @@
     .quantity {
         float: right;
         text-align: right;
-        margin-right: 50px;
-        width: 100%;
+        margin-left: auto;
+        margin-right: 20px;
+        width: 20%;
     }
 </style>
