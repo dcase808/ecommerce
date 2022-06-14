@@ -45,6 +45,7 @@ input,
 button {
 	font-size: inherit;
 	font-family: inherit;
+	border: dotted 1px;
 }
 
 button:focus:not(:focus-visible) {

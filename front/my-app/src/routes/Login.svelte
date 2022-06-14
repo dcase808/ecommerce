@@ -103,88 +103,77 @@
             Błędny login lub hasło
         {/if}
         <form on:submit|preventDefault={submit}>
-            <label><br><br><br>
-                <span>Podaj email:</span><br>
-                <input type='text' bind:value={username} required><br><br>   
+            <div class='form-text'>Zaloguj</div>
+            <label>
+                <div>E-mail:</div>
+                <input type='text' bind:value={username} required>
             </label>
             <label>
-                <span>Wpisz hasło:</span><br>
-                <input type='password' bind:value={password} required><br><br>
-            </label><br>
+                <div>Hasło:</div>
+                <input type='password' bind:value={password} required>
+            </label>
             <input class="buttons" type='submit' value='Zaloguj'>
         </form>
     </div>
 
     <div id="register">
         {#if showErrorRegister}
-        Błąd przy próbie rejestracji
+            Błąd przy próbie rejestracji
         {/if}
         {#if registerStatus}
-        Pomyslnie zarejestrowano konto!
+            Pomyslnie zarejestrowano konto!
         {/if}
         <form on:submit|preventDefault={registerSubmit}>
+            <div class='form-text'>Zarejestruj</div>
             <label>
-                <span>Podaj email:</span><br>
-                <input type='text' bind:value={registerUsername} required><br><br>
+                <div>E-mail:</div>
+                <input type='email' bind:value={registerUsername} required>
             </label>
             <label>
-                <span>Podaj imie i nazwisko:</span><br>
-                <input type='text' bind:value={nameAndSecondName} required><br><br>
+                <div>Imie i nazwisko:</div>
+                <input type='text' bind:value={nameAndSecondName} required>
             </label>
             <label>
-                <span>Podaj kod pocztowy</span><br>
-                <input type='text' bind:value={postal_code} required><br><br>
+                <div>Kod pocztowy</div>
+                <input type='text' bind:value={postal_code} required>
             </label>
             <label>
-                <span>Podaj adres:</span><br>
-                <input type='text' bind:value={address} required><br><br>
+                <div>Adres:</div>
+                <input type='text' bind:value={address} required>
             </label>
             <label>
-            <label>
-                <span>Podaj miasto:</span><br>
-                <input type='text' bind:value={city} required><br><br>
+                <div>Miasto:</div>
+                <input type='text' bind:value={city} required>
             </label>
-                <span>Podaj hasło</span><br>
-                <input type='password' bind:value={registerPassword}  required><br><br>
+            <label>
+                <div>Hasło</div>
+                <input type='password' bind:value={registerPassword}  required>
             </label>
             <input class="buttons" type='submit' value='Zarejestruj się'>
         </form>
     </div>
 </div>
 <style>
-    #login{
-        float: right;
-        width: 50%;
-        text-align: center;
-    }
-
-    #register{
-        text-align: center;
-        width: 50%;
-    }
-
     #content{
         display: flex;
-        width: 100%;
-        margin: 0;
-        padding: 0;
+        margin: auto;
+        width: 70%;
+        align-items: center;
+        justify-content: center;
     }
-
-    form{
-        padding: 0;
-        margin: 0;
+    #login {
+        margin: 50px;
+        text-align: right;
     }
-
-    .buttons{
-        background-color: burlywood;
-            border: solid gray 2px;
-            font-size: 20px;
-            color: black;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
+    #register {
+        margin: 50px;
     }
-    span{
-        font-size: 25px;
+    label {
+        display: block;
+    }
+    .form-text {
         font-weight: bold;
+        margin-bottom: 5px;
+        text-align: center;
     }
 </style>

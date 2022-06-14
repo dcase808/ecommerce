@@ -10,7 +10,7 @@
     <div class="menu">
         <div class="search-container">
             <form on:submit|preventDefault = {searchForward}>
-                <input id="search" type="text" bind:value={value}  placeholder="Wyszukaj..." name="search" required>
+                <input id="search" type="text" bind:value={value}  placeholder="Wpisz frazę do wyszukania" name="search" required>
                 <button id="search-button" type="submit">Wyszukaj</button>
             </form>
         </div>
