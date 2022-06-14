@@ -4,7 +4,7 @@
     import { onMount } from 'svelte';
     import {API_URL} from '$lib/Constans/Constans.svelte'
     import User from '../lib/Components/User.svelte';
-import Orders from '../lib/Components/Orders.svelte';
+    import Orders from '../lib/Components/Orders.svelte';
 
     let loggedIn = false
 
@@ -42,29 +42,32 @@ import Orders from '../lib/Components/Orders.svelte';
     }
 
     const getUser = async () => {
-        if(Cookies.get('jwt-token')) {
-            validateAndForward()
-            let url = API_URL + '/users/me'
-		    return await fetch(url)
-		    .then(response => response.json())
-		    .then(response => response)
-            .catch(e => console.error(e))
-        }
+        let url = API_URL + '/users/me'
+		return await fetch(url, {
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get('jwt-token')}
+        })
+        .then(response => response.json())
+		.then(response => response)
+		.catch(e => console.error(e))
     }
 
+
     const getOrders = async () => {
-        if(Cookies.get('jwt-token')) {
-            validateAndForward()
-            let url = API_URL + '/orders/'
-		    return fetch(url)
-		    .then(response => response.json())
-		    .then(response => response)
-            .catch(e => console.error(e))
-        }
-    }
+        let url = API_URL + '/orders/'
+        return await fetch(url, {
+        headers: {
+            'Authorization': 'Bearer ' + Cookies.get('jwt-token')}
+        })
+        .then(response => response.json())
+		.then(response => response)
+		.catch(e => console.error(e))
+    } 
+               
 
     let orders = getOrders()
     let user = getUser()
+
 </script>
 
 <div>
@@ -79,8 +82,10 @@ import Orders from '../lib/Components/Orders.svelte';
     
     {#await orders}
         Loading
-    {:then orders} 
-    <Orders _id={orders._id} item = {[orders.id, orders.quantity]}  price = {orders.price} paid = {orders.paid} /> 
+    {:then orders}
+    {#each orders as order }
+        <Orders _id={order._id} item = {order.item}  price = {order.price} paid = {order.paid} />
+    {/each}      
     {/await}
     <button on:click={logout}>Wyloguj</button>   
     {/if}
