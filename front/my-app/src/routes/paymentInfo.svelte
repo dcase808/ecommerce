@@ -7,6 +7,9 @@
     if (url_param == 'error=501') {
         status = false
     }
+    else {
+        status = true
+    }
 </script>
 
 <div class="info">
