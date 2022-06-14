@@ -1,5 +1,6 @@
 <script>
     import {API_URL} from '$lib/Constans/Constans.svelte'
+    import Item from '$lib/components/Item.svelte'
     export let id, quantity
 
     const getItem = async () => {
@@ -17,7 +18,6 @@
     {#await item}
         Loading
     {:then item}
-        <p>ID zamówienia: {item._id}</p>
-        <p>Ilość: {quantity}</p>
+        {quantity} X <Item id={item._id} title={item.title} price={item.price} img={item.img} desc={item.desc}/>
     {/await}
 </div>
