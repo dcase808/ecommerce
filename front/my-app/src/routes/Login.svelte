@@ -25,6 +25,9 @@
         if(response.ok) {
             goto('/user')
         }
+        else {
+            Cookies.remove('jwt-token')
+        }
     }
 
 

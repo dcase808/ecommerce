@@ -12,7 +12,10 @@
         })
 
         if(response.ok) {
-            goto('/user')
+            goto('/admin/panel')
+        }
+        else {
+            Cookies.remove('jwt-token-admin')
         }
     }
 
@@ -36,7 +39,7 @@
             if(response.ok) {
                 let body = await response.json()
                 showError = false;
-                Cookies.set('jwt-token', body.access_token, {sameSite: 'strict'})
+                Cookies.set('jwt-token-admin', body.access_token, {sameSite: 'strict'})
                 validateAndForward()
                 }
             else {
@@ -45,7 +48,7 @@
         }
     }
 
-    if(Cookies.get('jwt-token'))
+    if(Cookies.get('jwt-token-admin'))
     {
         validateAndForward()
     }
