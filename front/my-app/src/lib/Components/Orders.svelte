@@ -3,11 +3,11 @@
     export let _id, item, price, paid
 </script>
 
-<div>
-    <p>{_id}</p>
+<div class="Orders">
+    <p>ID produktu: {_id}</p>
         {#each item as it}
             <ItemInOrders id ={it.id} quantity = {it.quantity} />
         {/each}   
-    <p>{price}</p>
-    <p>{paid}</p>
+    <p> class='price'>Cena: {price}</p>
+    <p>Czy zapłacono? {paid}</p>
 </div>

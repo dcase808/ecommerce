@@ -3,9 +3,9 @@
 </script>
 
 <div>
-    <p>{id}</p>
-    <p>{name}</p>
-    <p>{address}</p>
-    <p>{postal_code}</p>
-    <p>{city}</p>
+    <p>E-mail: {id}</p>
+    <p>Imię i nazwisko: {name}</p>
+    <p>Adres zamieszkania: {address}</p>
+    <p>Kod pocztowy: {postal_code}</p>
+    <p>Miasto {city}</p>
 </div>

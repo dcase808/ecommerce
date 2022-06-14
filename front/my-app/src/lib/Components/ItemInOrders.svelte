@@ -13,11 +13,11 @@
     let item = getItem()
 </script>
 
-<div>
+<div class="ItemInOders">
     {#await item}
         Loading
     {:then item}
-        {item._id}
-        {quantity}
+        <p>ID zamówienia: {item._id}</p>
+        <p>Ilość: {quantity}</p>
     {/await}
 </div>

@@ -70,15 +70,13 @@
 
 </script>
 
-<div>
-    <p>Tu bedzie info o koncie</p>
+<main>
     {#if loggedIn}
     {#await user}
         Loading
     {:then user} 
        <User id={user._id} name={user.name} address={user.address} postal_code={user.postal_code} city={user.city}/>
     {/await}
-    Zamowienia
     
     {#await orders}
         Loading
@@ -89,4 +87,12 @@
     {/await}
     <button on:click={logout}>Wyloguj</button>   
     {/if}
-</div>
+</main>
+
+<style>
+    main {
+        margin: auto;
+        width: 70%;
+        display: flex;
+    }
+</style>
