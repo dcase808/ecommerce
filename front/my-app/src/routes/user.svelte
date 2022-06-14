@@ -29,7 +29,7 @@
         }
         else
         {
-            goto('/Login')
+            goto('/login')
         }
     }
     onMount(() => {
