@@ -81,7 +81,11 @@
         width: 300px
     }
     .item_img{
+        max-width: 300px;
+        max-height: 300px;
+        height: 300px;
         width: 300px;
+
     }
     .summary {
         margin-top: 20px;
