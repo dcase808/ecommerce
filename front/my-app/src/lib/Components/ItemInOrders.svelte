@@ -1,6 +1,6 @@
 <script>
     import {API_URL} from '$lib/Constans/Constans.svelte'
-    import Item from '$lib/components/Item.svelte'
+    import Item from '$lib/Components/Item.svelte'
     export let id, quantity
 
     const getItem = async () => {
