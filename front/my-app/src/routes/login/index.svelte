@@ -29,7 +29,7 @@ import { update_await_block_branch } from 'svelte/internal';
         }
     }
 
-    async function googleLogin(response){
+    globalThis.googleLogin = async (response) =>{
         let token = await loginGoogle(response.credential)
         if(token.detail == "Unauthorized"){
             googleLoginError = true
@@ -220,21 +220,6 @@ import { update_await_block_branch } from 'svelte/internal';
                 <div>Hasło</div>
                 <input type='password' bind:value={registerPassword}  required>
             </label>
-            <div id='google-register'>
-                <div id="g_id_onload"
-                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
-                data-callback="googleRegister"
-                data-auto_prompt="false">
-                </div>
-                <div class="g_id_signin"
-                    data-type="icon"
-                    data-size="medium"
-                    data-theme="outline"
-                    data-text="sign_in_with"
-                    data-shape="rectangular"
-                    data-logo_alignment="left">
-                </div>
-            </div>
             <input class="buttons" type='submit' value='Zarejestruj'>
 
         </form>
