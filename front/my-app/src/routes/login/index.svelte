@@ -23,7 +23,7 @@
 
 
     let googleReady = false;
-    let mounted = false;
+    let mounted = true;
 
     onMount(() => {
         mounted = true;
