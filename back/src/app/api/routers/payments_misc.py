@@ -45,6 +45,7 @@ async def create_payment_request(order, ip):
         'description': 'Zamowienie '+ str(order.id),
         'currencyCode': 'PLN',
         'totalAmount': int(order.price*100),
+        'continueUrl': 'https://ecommerce-three-drab.vercel.app/paymentInfo',
         'extOrderId': str(order.id),
         'products': products
     }
