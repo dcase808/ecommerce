@@ -1,6 +1,3 @@
-@import '@fontsource/fira-mono';
-
-
 
 body {
 	min-height: 100vh;
@@ -9,7 +6,6 @@ body {
 	background-color: #DFDCE3;
 	font-family: 'Poppins', sans-serif;
 }
-
 
 #svelte {
 	min-height: 100vh;

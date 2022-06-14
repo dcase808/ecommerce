@@ -33,6 +33,9 @@
         width: 70%;
         display: flex;
     }
+    .img  {
+        max-height: 300px;
+    }
     .item_img{
         width: 300px;
     }
