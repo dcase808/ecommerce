@@ -1,6 +1,7 @@
 <script>
     import { shopping_cart } from '$lib/stores.js'
     import ItemInCart from '$lib/Components/ItemInCart.svelte';
+    import {goto} from '$app/navigation';
 
     const removeQuantity = (id) => {
         for (const obj of $shopping_cart) 
@@ -38,8 +39,8 @@
         }
         return sum
     }
-    const payment = () => {
-        console.log('test')
+    const goToSummary = () => {
+        goto('/summary')
     }
 
 </script>
@@ -57,7 +58,7 @@
             </div>
         </section>
         {/each}
-            <div class='summary'>Suma: {calculateSum().toFixed(2)} PLN <button class='go-to-payment' on:click={payment}>Przejdż do podsumowania</button></div>
+            <div class='summary'>Suma: {calculateSum().toFixed(2)} PLN <button class='go-to-payment' on:click={goToSummary}>Podsumowanie</button></div>
         {:else}
             <p>Koszyk jest pusty.</p>
     {/if}
@@ -80,8 +81,8 @@
     }
     .buttons{
         width: 20%;
-        margin-left: 70px;
-        margin-right: -100px;
+        margin-left: 100px;
+        margin-right: -500px;
     }
     .change-quantity{
         width: 50px;
@@ -91,9 +92,10 @@
     .go-to-payment {
         border: none;
         height: 50px;
+        width: 150px;
     }
     .summary {
         margin-left: auto;
-        margin: 20px 50px 20px auto;
+        margin: 20px 0px 20px auto;
     }
 </style>
