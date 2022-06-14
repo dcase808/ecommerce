@@ -6,16 +6,43 @@
         .then(response => response.json())
         .then(response => response)
         
-} 
+    } 
+    const addToCart = () => [
+        console.log('add to cart')
+    ]
     const item = getItems();
     </script>
-
-{#await item}
-    <span>loading</span>
-{:then item} 
-<div class="item">
-    <h3>{item.title}</h3>
-    <p>{item.desc}</p>
-    <p>{item.price}</p>
-</div>
-{/await}
+<main>
+    {#await item}
+        <span>loading</span>
+    {:then item} 
+        <div class='img'>
+            <img src={item.img} alt={item.title} class='item_img'>
+        </div>
+        <div class='summary'>
+            <div class='title'>{item.title}</div>
+            <div class='description'>{item.desc}</div>
+        </div>
+        
+    {/await}
+</main>
+<style>
+    main {
+        margin: auto;
+        width: 70%;
+        display: flex;
+    }
+    .item_img{
+        width: 300px;
+    }
+    .summary {
+        margin-top: 100px;
+    }
+    .title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .description {
+        margin-top: 10px;
+    }
+</style>
