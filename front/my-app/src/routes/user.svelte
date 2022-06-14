@@ -99,5 +99,6 @@
     }
     .user {
         margin: 20px;
+        max-width: 30%;
     }
 </style>
