@@ -34,7 +34,8 @@
         display: flex;
     }
     .img  {
-        max-height: 300px;
+        height: 300px;
+        width: 300px
     }
     .item_img{
         width: 300px;

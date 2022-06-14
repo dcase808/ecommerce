@@ -27,7 +27,7 @@
         height: 150px;
     }
     .img_wrapper {
-        max-width: 150px;
+        width: 150px;
     }
     .title {
         font-weight: bold;
