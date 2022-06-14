@@ -38,3 +38,26 @@
         goto('/')
     }
 </script>
+
+<main>
+    {#if loggedIn}
+        <a href="/admin/addItem">Dodaj przedmiot</a> <br>
+        <button on:click={logout}>Wyloguj</button>
+    {/if}    
+</main>
+
+<style>
+    main {
+        padding: 20px;
+        align-items: center;
+        display: flex;
+    }
+    button {
+        display: flex;
+        margin: 30px;
+    } 
+    a {
+        display: flex;
+        margin: 30px;
+    }
+</style>
