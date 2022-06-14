@@ -15,7 +15,7 @@
             </form>
         </div>
         <a class="link" href="/login">Twoje konto</a>
-        <a class="link" href="/orders">Koszyk</a>
+        <a class="link" href="/cart">Koszyk</a>
     </div>
 
     <style>

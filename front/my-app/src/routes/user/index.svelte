@@ -3,8 +3,8 @@
     import Cookies from 'js-cookie'
     import { onMount } from 'svelte';
     import {API_URL} from '$lib/Constans/Constans.svelte'
-    import User from '../lib/Components/User.svelte';
-    import Orders from '../lib/Components/Orders.svelte';
+    import User from '$lib/Components/User.svelte';
+    import Orders from '$lib/Components/Orders.svelte';
 
     let loggedIn = false
 

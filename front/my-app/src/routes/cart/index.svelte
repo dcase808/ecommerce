@@ -3,7 +3,7 @@
     import Cookies from 'js-cookie'
     import { goto } from '$app/navigation'
     import { onMount } from 'svelte';
-    import Orders from '../lib/Components/Orders.svelte';
+    import Orders from '$/lib/Components/Orders.svelte';
 
     let loggedIn = false
 
