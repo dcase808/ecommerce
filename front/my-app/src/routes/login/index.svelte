@@ -1,9 +1,10 @@
+
 <script>
     import {goto} from '$app/navigation';
     import Cookies from 'js-cookie'
     import {API_URL} from '$lib/Constans/Constans.svelte'
     import { onMount } from 'svelte';
-import { update_await_block_branch } from 'svelte/internal';
+    import { update_await_block_branch } from 'svelte/internal';
 
     let username, password;
 
@@ -19,17 +20,28 @@ import { update_await_block_branch } from 'svelte/internal';
     let showErrorRegister = false;
     let registerStatus = false;
 
-    async function googleRegister(response){
-        let token = await registerGoogle(response.credential)
-        if(token.detail == "Unauthorized"){
-           showErrorRegister = true
+
+
+    let googleReady = true;
+    let mounted = false;
+
+    onMount(() => {
+        mounted = true;
+        if (googleReady) {
+            console.log('yo')
+            displaySignInButton()
         }
-        else{
-            registerStatus = true
-        }
+    });
+
+    function displaySignInButton() {
+        google.accounts.id.initialize({
+            client_id: "541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com",
+            callback: googleLogin
+        });
+        google.accounts.id.prompt(); // also display the One Tap dialog
     }
 
-    async function googleLogin(response){
+    const googleLogin = async (response) => {
         let token = await loginGoogle(response.credential)
         if(token.detail == "Unauthorized"){
             googleLoginError = true
@@ -39,11 +51,6 @@ import { update_await_block_branch } from 'svelte/internal';
             validateAndForward()
         }
     }
-
-    onMount(() => {
-        window.googleRegister = googleRegister
-        window.googleLogin = googleLogin
-    })
 
     const validateAndForward = async () => {
         let url = API_URL + '/users/me'
@@ -145,9 +152,8 @@ import { update_await_block_branch } from 'svelte/internal';
     
 </script>
 <svelte:head>
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 </svelte:head>
-
 <div id="content">
     <div id="login">
         {#if showError}
@@ -168,6 +174,7 @@ import { update_await_block_branch } from 'svelte/internal';
             </label>
             <input class="buttons" type='submit' value='Zaloguj'>
         </form>
+
     </div>
 
 
@@ -211,12 +218,7 @@ import { update_await_block_branch } from 'svelte/internal';
 
     </div>
 </div>
-<div id="g_id_onload"
-            data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
-            data-callback="googleLogin"
-            data-your_own_param_1_to_login="any_value"
-            data-your_own_param_2_to_login="any_value">
-</div>
+
 
 <style>
     #content{
