@@ -1,5 +1,12 @@
 <script>
-    let status = true
+    import {page} from '$app/stores';
+
+    let status;
+
+    let url_param = $page.url.searchParams.toString()
+    if (url_param == 'error=501') {
+        status = false
+    }
 </script>
 
 <div class="info">
