@@ -17,7 +17,7 @@
 
         if(!response.ok){
             Cookies.remove('jwt-token')
-            goto('/Login')
+            goto('/login')
         }
         loggedIn = true
     }
