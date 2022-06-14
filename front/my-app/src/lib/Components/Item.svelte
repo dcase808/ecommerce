@@ -28,6 +28,7 @@
     }
     .img_wrapper {
         width: 150px;
+        min-width: 150px;
     }
     .title {
         font-weight: bold;
