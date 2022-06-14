@@ -79,6 +79,11 @@
         Loading
     {:then orders}
     <section>
+    {#if orders.length === 0}
+        <span class="error">
+        Brak zamówień na koncie
+        </span>
+    {/if}
     {#each orders as order }
         <Orders _id={order._id} item = {order.item}  price = {order.price} paid = {order.paid} />
     {/each}
@@ -100,5 +105,8 @@
     .user {
         margin: 20px;
         max-width: 30%;
+    }
+    .error {
+        text-align: center;
     }
 </style>

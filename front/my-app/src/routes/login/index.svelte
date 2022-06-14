@@ -167,23 +167,24 @@ import { update_await_block_branch } from 'svelte/internal';
                 <input type='password' bind:value={password} required>
             </label>
             <input class="buttons" type='submit' value='Zaloguj'>
-            <div id='google-login'>
-                <div id="g_id_onload"
-                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
-                data-callback="googleLogin"
-                data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-                data-type="icon"
-                data-size="medium"
-                data-theme="outline"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left">
-            </div>
-            </div>
+
         </form>
 
+    </div>
+    <div id='google-login'>
+        <div id="g_id_onload"
+        data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
+        data-callback="googleLogin"
+        data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+        data-type="icon"
+        data-size="small"
+        data-theme="outline"
+        data-text="continue_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+    </div>
     </div>
 
 
@@ -227,6 +228,7 @@ import { update_await_block_branch } from 'svelte/internal';
 
     </div>
 </div>
+
 <style>
     #content{
         display: flex;
@@ -251,10 +253,8 @@ import { update_await_block_branch } from 'svelte/internal';
         text-align: center;
     }
     #google-login{
-        float: right;
-    }
-    #google-register{
-        float: left;
+        float: center;
+
     }
     .buttons{
         width: 200px;
