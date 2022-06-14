@@ -1,5 +1,5 @@
 <script>
-	import Item from "../lib/Components/Item.svelte";
+	import Item from "$lib/Components/Item.svelte";
 	const getItems = async () => {
         const response = await fetch('https://ecommerce-demo-api.herokuapp.com/v1/api/items')
         return await response.json();

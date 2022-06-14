@@ -1,58 +1,25 @@
 <script>
-    import { API_URL } from '$lib/Constans/Constans.svelte'
-    import Cookies from 'js-cookie'
-    import { goto } from '$app/navigation'
-    import { onMount } from 'svelte';
-    import Orders from '$lib/Components/Orders.svelte';
+    import { shopping_cart } from '$lib/stores.js'
+    import ItemInCart from '$lib/Components/ItemInCart.svelte';
 
-    let loggedIn = false
+    let cart;
 
-    const validateAndForward = async () => {
-        let url = API_URL + '/users/me'
-        let response = await fetch(url, {
-            headers: {'Authorization': 'Bearer ' + Cookies.get('jwt-token')}
-        })
-
-        if(!response.ok){
-            Cookies.remove('jwt-token')
-            goto('/Login')
-        }
-        loggedIn = true
-    }
-
-    const checkIfLoggedIn = async () => {
-    if(Cookies.get('jwt-token'))
-    {
-        validateAndForward()
-    }
-    else
-    {
-        goto('/Login')
-    }
-    }
-
-    onMount(() => {
-    checkIfLoggedIn()
+    shopping_cart.subscribe(value => {
+        cart = value
     })
 
-    const getOrders = async () => {
-        if(Cookies.get('jwt-token')) {
-            validateAndForward()
-            let url = API_URL + '/orders/'
-            console.log(url)
-		    return fetch(url)
-		    .then(response => response.json())
-		    .then(response => response)
-            .catch(e => console.error(e))
-        }
-    }
-    let orders = getOrders()
+
 </script>
 
-<div>
-    {#await orders}
-    Loading    
-    {:then orders}
-    <Orders _id={orders._id} item ={[orders.id, orders.quantity]} price = {orders.price} paid = {orders.paid} />  
-    {/await}
-</div>
+<main>
+    {#each cart as item}
+        <ItemInCart id={item.item_id} quantity={item.quantity}/>
+    {/each}
+</main>
+<style>
+    main{
+        width: 70%;
+        margin: auto;
+
+    }
+</style>
