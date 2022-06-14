@@ -4,12 +4,13 @@
 <style>
 footer {
     display: flex;
-    position: relative;
+    bottom: 0px;
     margin-bottom: 0;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 40px;
     background-color: #F7B733;
+    overflow-x: hidden;
 }
 </style>

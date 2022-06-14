@@ -17,10 +17,11 @@
         <span>loading</span>
     {:then item} 
         <div class='img'>
-            <img src={item.img} alt={item.title} class='item_img'>
+            <img src={item.img} alt={item.title + ' img'} class='item_img'>
         </div>
         <div class='summary'>
             <div class='title'>{item.title}</div>
+            <div class='price'>{item.price} PLN</div>
             <div class='description'>{item.desc}</div>
         </div>
         

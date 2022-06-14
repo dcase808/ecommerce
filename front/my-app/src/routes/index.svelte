@@ -1,5 +1,5 @@
 <script>
-import Menu from "../lib/Components/Menu.svelte";
+import ItemList from "../lib/Components/ItemList.svelte";
 
 
 </script>
@@ -8,7 +8,7 @@ import Menu from "../lib/Components/Menu.svelte";
 	<title>DShop</title>
 	<meta name="description" content="Sklep internetowy" />
 </svelte:head>
-	<Menu />
+	<ItemList />
 
 
 <style>
