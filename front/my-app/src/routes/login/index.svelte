@@ -22,7 +22,7 @@
 
 
 
-    let googleReady = true;
+    let googleReady = false;
     let mounted = false;
 
     onMount(() => {
@@ -159,7 +159,7 @@
     
 </script>
 <svelte:head>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer on:load={googleLoaded}></script>
 </svelte:head>
 <div id="content">
     <div id="login">
