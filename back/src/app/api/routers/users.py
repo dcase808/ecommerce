@@ -22,18 +22,12 @@ async def social_login(data = Depends(verify_oidc_token)):
     email, _ = data
     query = User.find_one({'_id': email, 'social': True})
     if await query is None:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+        email, name = data
+        query = UserInDB.find({'_id': email})
+        out = UserInDB(id=email, name=name, social=True)
+        return await out.insert()
     token = create_token({'sub': email})
     return {'access_token': token, 'token_type': 'bearer'}
-
-@router.post('/register/oauth', response_model=User)
-async def social_register(data = Depends(verify_oidc_token)):
-    email, name = data
-    query = UserInDB.find({'_id': email})
-    if await query.count():
-        raise HTTPException(status_code=status.HTTP_409_CONFLICT)
-    out = UserInDB(id=email, name=name, social=True)
-    return await out.insert()
 
 @router.post('/register', response_model=User)
 async def register(user: UserCreate):
