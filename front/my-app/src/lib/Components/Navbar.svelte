@@ -14,7 +14,7 @@
                 <button id="search-button" type="submit">Wyszukaj</button>
             </form>
         </div>
-        <a class="link" href="/Login">Twoje konto</a>
+        <a class="link" href="/login">Twoje konto</a>
         <a class="link" href="/orders">Koszyk</a>
     </div>
 
