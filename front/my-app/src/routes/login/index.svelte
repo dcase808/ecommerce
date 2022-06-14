@@ -1,10 +1,9 @@
-
 <script>
     import {goto} from '$app/navigation';
     import Cookies from 'js-cookie'
     import {API_URL} from '$lib/Constans/Constans.svelte'
     import { onMount } from 'svelte';
-    import { update_await_block_branch } from 'svelte/internal';
+import { update_await_block_branch } from 'svelte/internal';
 
     let username, password;
 
@@ -20,35 +19,17 @@
     let showErrorRegister = false;
     let registerStatus = false;
 
-
-
-    let googleReady = false;
-    let mounted = true;
-
-    onMount(() => {
-        mounted = true;
-        if (googleReady) {
-            console.log('yo')
-            displaySignInButton()
+    async function googleRegister(response){
+        let token = await registerGoogle(response.credential)
+        if(token.detail == "Unauthorized"){
+           showErrorRegister = true
         }
-    });
-
-    function googleLoaded() {
-        googleReady = true;
-        if (mounted) {
-            displaySignInButton()
+        else{
+            registerStatus = true
         }
     }
 
-    function displaySignInButton() {
-        google.accounts.id.initialize({
-            client_id: "541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com",
-            callback: googleLogin
-        });
-        google.accounts.id.prompt(); // also display the One Tap dialog
-    }
-
-    const googleLogin = async (response) => {
+    async function googleLogin(response){
         let token = await loginGoogle(response.credential)
         if(token.detail == "Unauthorized"){
             googleLoginError = true
@@ -58,6 +39,11 @@
             validateAndForward()
         }
     }
+
+    onMount(() => {
+        window.googleRegister = googleRegister
+        window.googleLogin = googleLogin
+    })
 
     const validateAndForward = async () => {
         let url = API_URL + '/users/me'
@@ -159,8 +145,9 @@
     
 </script>
 <svelte:head>
-    <script src="https://accounts.google.com/gsi/client" async defer on:load={googleLoaded}></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </svelte:head>
+
 <div id="content">
     <div id="login">
         {#if showError}
@@ -180,6 +167,21 @@
                 <input type='password' bind:value={password} required>
             </label>
             <input class="buttons" type='submit' value='Zaloguj'>
+            <div id='google-login'>
+                <div id="g_id_onload"
+                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
+                data-callback="googleLogin"
+                data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin"
+                data-type="icon"
+                data-size="medium"
+                data-theme="outline"
+                data-text="sign_in_with"
+                data-shape="rectangular"
+                data-logo_alignment="left">
+            </div>
+            </div>
         </form>
 
     </div>
@@ -218,6 +220,21 @@
                 <div>Hasło</div>
                 <input type='password' bind:value={registerPassword}  required>
             </label>
+            <div id='google-register'>
+                <div id="g_id_onload"
+                data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
+                data-callback="googleRegister"
+                data-auto_prompt="false">
+                </div>
+                <div class="g_id_signin"
+                    data-type="icon"
+                    data-size="medium"
+                    data-theme="outline"
+                    data-text="sign_in_with"
+                    data-shape="rectangular"
+                    data-logo_alignment="left">
+                </div>
+            </div>
             <input class="buttons" type='submit' value='Zarejestruj'>
 
         </form>
@@ -225,8 +242,6 @@
 
     </div>
 </div>
-
-
 <style>
     #content{
         display: flex;

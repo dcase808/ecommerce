@@ -25,6 +25,7 @@ async def social_login(data = Depends(verify_oidc_token)):
         email, name = data
         query = UserInDB.find({'_id': email})
         out = UserInDB(id=email, name=name, social=True)
+        await out.insert()
         token = create_token({'sub': email})
         return {'access_token': token, 'token_type': 'bearer'}
     token = create_token({'sub': email})
