@@ -37,6 +37,7 @@
     }
     .summary {
         margin-top: 100px;
+        margin-left: 20px;
     }
     .title {
         font-size: 20px;

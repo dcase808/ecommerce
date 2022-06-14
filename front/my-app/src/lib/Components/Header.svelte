@@ -7,7 +7,6 @@ import Navbar from "../Components/Navbar.svelte";
 	<div class="corner">
 		<div id = "logo"> <a href="/"> <img class="logo" src="assets/Drop Shop-logos_black.png" alt="logo"> </a></div>
 	</div>
-
 	<Navbar />
 </header>
 
@@ -21,14 +20,13 @@ import Navbar from "../Components/Navbar.svelte";
 		width: 20%;
 	}
 	header{
-		background-color: bisque;
+		background-color: #F7B733;
+		
 	}
 
 	.corner img {
         width: 100%; 
 	}
-
-
 	a:hover {
 		color: var(--accent-color);
 	}

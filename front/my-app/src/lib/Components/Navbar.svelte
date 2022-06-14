@@ -51,11 +51,8 @@
             color: black;
         }
         #search-button{
-            background-color: burlywood;
-            border: solid gray 2px;
-            font-size: 20px;
+            background-color: white;
+            font-size: 15px;
             color: black;
-            font-weight: bold;
-            font-family: 'Courier New', Courier, monospace;
         }
     </style>

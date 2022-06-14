@@ -1,6 +1,7 @@
 <script>
 import '../app.css';
 import Header from '../lib/Components/Header.svelte';
+import Footer from '../lib/Components/Footer.svelte';
 </script>
 
 <Header/>
@@ -9,9 +10,7 @@ import Header from '../lib/Components/Header.svelte';
 	<slot />
 </main>
 
-<footer>
-	<p>Copyrights 2022 Marcin Koczulap | Filip Zimny | Jakub Ziomek</p>
-</footer>
+<Footer/>
 
 <style>
 	main {
@@ -20,14 +19,5 @@ import Header from '../lib/Components/Header.svelte';
 		width: 100%;
 		margin: 0;
 		padding: 0;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 40px;
-		background-color: rgb(107, 71, 17);
 	}
 </style>
