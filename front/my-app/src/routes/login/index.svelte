@@ -175,16 +175,9 @@ import { update_await_block_branch } from 'svelte/internal';
         <div id="g_id_onload"
         data-client_id="541531122590-o9cokanrj3caf6lhhrfen97v604b1896.apps.googleusercontent.com"
         data-callback="googleLogin"
-        data-auto_prompt="false">
+        data-auto_prompt="true">
     </div>
-    <div class="g_id_signin"
-        data-type="icon"
-        data-size="small"
-        data-theme="outline"
-        data-text="continue_with"
-        data-shape="rectangular"
-        data-logo_alignment="left">
-    </div>
+
     </div>
 
 
