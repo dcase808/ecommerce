@@ -13,6 +13,7 @@
     <div class="e-mail">E-mail: {id}</div>
     <div class="name">Imię i nazwisko: {name}</div>
     <div class="address">Adres: {address} <br> {postal_code} {city}</div>
+    <button on:click={()=>{goto('user/edit')}}>Edytuj</button>
     <button on:click={logout}>Wyloguj</button>
 </div>
 
