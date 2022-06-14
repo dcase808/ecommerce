@@ -36,11 +36,6 @@
         checkIfLoggedIn()
     })
 
-    const logout = () => {
-        Cookies.remove('jwt-token')
-        goto('/')
-    }
-
     const getUser = async () => {
         let url = API_URL + '/users/me'
 		return await fetch(url, {
@@ -72,20 +67,23 @@
 
 <main>
     {#if loggedIn}
+    <div class="user">
     {#await user}
         Loading
     {:then user} 
-       <User id={user._id} name={user.name} address={user.address} postal_code={user.postal_code} city={user.city}/>
+       <User id={user._id} name={user.name} address={user.address} postal_code={user.postal_code} city={user.city}/>        
     {/await}
+    </div>
     
     {#await orders}
         Loading
     {:then orders}
+    <section>
     {#each orders as order }
         <Orders _id={order._id} item = {order.item}  price = {order.price} paid = {order.paid} />
-    {/each}      
-    {/await}
-    <button on:click={logout}>Wyloguj</button>   
+    {/each}
+    </section>    
+    {/await} 
     {/if}
 </main>
 
@@ -94,5 +92,12 @@
         margin: auto;
         width: 70%;
         display: flex;
+    }
+    section {
+        width: 70%;
+        margin: 20px;
+    }
+    .user {
+        margin: 20px;
     }
 </style>
